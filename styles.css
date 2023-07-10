@@ -1,0 +1,239 @@
+/* Reset some default styles */
+/* Reset some default styles */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  background-color: #ECECEC;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+   /* Add padding for spacing */
+}
+.logo{
+  max-width: 100%;
+  max-height: 100%;
+}
+.member-image{
+  height: 50%;
+  width: 50%;
+}
+#band-members {
+  text-align: center;
+  margin-bottom: 5px;
+}
+.poster{
+  width: 30%;
+  height: 30%;
+}
+.carousel {
+  width: 50%;
+  height: 50%;
+  margin: 0 auto;
+}
+.merch-image {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  padding-bottom: 5px;
+}
+
+.sold-out-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -90%);
+  display: none;
+  color: red;
+  font-size: 40px;
+  background-color: white;
+  font-weight: bold;
+   /* Add transition effect */
+}
+
+.merch-image:hover {
+  opacity: 0.5; /* Set the opacity of the image on hover */
+}
+
+.merch-item:hover .sold-out-text {
+   /* Set the opacity of the "Sold Out" text on hover */
+  display: block;/* Add transition effect */
+}
+
+.tour-dates {
+  text-align: center;
+}
+
+.tour-calendar {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.tour-month {
+  margin: 0 20px;
+}
+.tour-month h3 {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+.tour-days {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 10px;
+}
+.tour-day {
+  display:block;
+  padding: 5px 10px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.tour-day:hover {
+  background-color: #e0e0e0;
+}
+.selected-date {
+  margin-top: 20px;
+}
+.selected-date h3 {
+  font-size: 18px;
+}
+
+#selected-date-info {
+  font-size: 16px;
+  color: #888888;
+}
+
+.mySlides {
+  display: none;
+  width: auto;
+  height: auto;
+  transition: all 0.5s ease;
+}
+
+.mySlides img {
+  width: 50%;
+  height: 50%;
+}
+
+.text {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: #fff;
+  font-size: 18px;
+}
+
+section {
+  padding: 10px;
+  background-color: #ECECEC;
+  margin-bottom: 20px;
+  width: 100%; /* Make the sections take the full width of the container */
+  max-width: 800px;
+  text-align: center;
+}
+
+footer {
+  background-color: #000;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+  margin-top: 20px; /* Add spacing between the last section and the footer */
+}
+.testimonial{
+  text-align: center;
+}
+/* Audio Player Styles */
+.audio-player {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.audio-player audio {
+  width: 100%;
+}
+
+.audio-player-controls {
+  margin-left: 10px;
+}
+
+.audio-player-controls button {
+  background-color: #ECECEC;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.audio-player-controls button:hover {
+  background-color: #555;
+}
+#merchandise {
+  text-align: center;
+  padding: 20px;
+}
+
+#merchandise h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.merch-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.merch-item {
+  width: 250px;
+  text-align: center;
+}
+
+.merch-item img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.merch-item h3 {
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.merch-item p {
+  margin-bottom: 10px;
+}
+
+.price {
+  font-weight: bold;
+}
+.contact-info {
+  background-color: #ECECEC;
+  padding: 20px;
+  text-align: center;
+}
+
+.contact-info h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.contact-info p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.contact-info .email {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
