@@ -155,7 +155,7 @@ footer {
 .audio-player {
   display: flex;
   align-items: center;
-  margin-top: 20px;
+  padding-top:2.5%;
 }
 
 .audio-player audio {
