@@ -155,10 +155,10 @@ footer {
 .audio-player {
   display: flex;
   align-items: center;
-  padding-top:2.5%;
+  padding-bottom:2.5%;
 }
 .songTitle{
-  margin-top: 5%;
+  margin-top: 2.5%;
 }
 .audio-player audio {
   width: 100%;
