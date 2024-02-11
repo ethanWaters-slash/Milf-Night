@@ -12,6 +12,20 @@ body {
   padding: 20px;
    /* Add padding for spacing */
 }
+#countdown {
+  display: flex;
+  justify-content: center;
+  margin-top: 0px;
+}
+#countdown div {
+  font-family: Arial, sans-serif;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #ECECEC;
+  font-size: 35px;
+  font-weight: bold; /* Add boldness */
+}
 .logo{
   max-width: 100%;
   max-height: 100%;
