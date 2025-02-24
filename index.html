@@ -32,33 +32,98 @@
     <!-- Add music samples, album covers, etc. here -->
     
     
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <style>
+        .audio-player {
+            margin-bottom: 20px;
+        }
+        .songTitle {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
     <h3 class="songTitle">Rock N Roll Queen</h3>
     <div class="audio-player">
-      <audio controls controlsList="nodownload nodirectionals">
-        <source src="songs/Rock n Roll Queen.mp3" type="audio/mpeg">
-      </audio>
-      <div class="audio-player-controls">
-      </div>
+        <audio id="audio1" controls controlsList="nodownload nodirectionals">
+            <source src="songs/Rock n Roll Queen.mp3" type="audio/mpeg">
+        </audio>
     </div>
-    
+
     <h3 class="songTitle">The Milf That Got Away</h3>
     <div class="audio-player">
-      <audio controls controlsList="nodownload nodirectionals">
-        <source src="songs/IHTAvox 2.mp3" type="audio/mpeg">
-      </audio>
-      <div class="audio-player-controls">
-      </div>
+        <audio id="audio2" controls controlsList="nodownload nodirectionals">
+            <source src="songs/IHTAvox 2.mp3" type="audio/mpeg">
+        </audio>
     </div>
-    
+
     <h3 class="songTitle">West Coast Girls</h3>
     <div class="audio-player">
-       <audio controls controlsList="nodownload nodirectionals">
-        <source src="songs/West Coast Girls.mp3" type="audio/mpeg">
-      </audio>
-      <div class="audio-player-controls">
-      </div>
+        <audio id="audio3" controls controlsList="nodownload nodirectionals">
+            <source src="songs/West Coast Girls.mp3" type="audio/mpeg">
+        </audio>
     </div>
-        
+
+    <script>
+        if ('mediaSession' in navigator) {
+            const audioElements = document.querySelectorAll("audio");
+            
+            audioElements.forEach(audio => {
+                audio.addEventListener("play", function() {
+                    // Pause other tracks when one starts playing
+                    audioElements.forEach(otherAudio => {
+                        if (otherAudio !== audio) {
+                            otherAudio.pause();
+                        }
+                    });
+
+                    // Set song metadata for lock screen
+                    const songTitle = this.parentElement.previousElementSibling.textContent;
+                    let songMetadata = {
+                        "Rock N Roll Queen": {
+                            artist: "Milf Night",
+                            album: "Debut Album",
+                            artwork: [{ src: "images/milfNight.jpg", sizes: "512x512", type: "image/png" }]
+                        },
+                        "The Milf That Got Away": {
+                            artist: "Milf Night",
+                            album: "Debut Album",
+                            artwork: [{ src: "images/milfNight.jpg", sizes: "512x512", type: "image/png" }]
+                        },
+                        "West Coast Girls": {
+                            artist: "Milf Night",
+                            album: "Debut Album",
+                            artwork: [{ src: "images/milfNight.jpg", sizes: "512x512", type: "image/png" }]
+                        }
+                    };
+
+                    if (songMetadata[songTitle]) {
+                        navigator.mediaSession.metadata = new MediaMetadata({
+                            title: songTitle,
+                            artist: songMetadata[songTitle].artist,
+                            album: songMetadata[songTitle].album,
+                            artwork: songMetadata[songTitle].artwork
+                        });
+                    }
+
+                    // Handle media control buttons
+                    navigator.mediaSession.setActionHandler("play", () => this.play());
+                    navigator.mediaSession.setActionHandler("pause", () => this.pause());
+                    navigator.mediaSession.setActionHandler("seekbackward", () => this.currentTime = Math.max(this.currentTime - 10, 0));
+                    navigator.mediaSession.setActionHandler("seekforward", () => this.currentTime = Math.min(this.currentTime + 10, this.duration));
+                });
+            });
+        }
+    </script>
+
     
     <h2>Listen and follow Milf Night!</h2>
      <a href="https://open.spotify.com/show/49nxTppbgeGXE8wSyQSqw0?si=K-uqRhIASa6OP38N5JoObw" target="_blank" class="image-link">
