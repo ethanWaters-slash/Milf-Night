@@ -5,6 +5,28 @@
   <meta charset="UTF-8">
   <title>Milf Night</title>
   <link rel="stylesheet" href="styles.css">
+  <title>Music Player</title>
+    <style>
+        <style>
+        .audio-player {
+            margin-bottom: 20px;
+        }
+        .songTitle {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        button {
+            padding: 8px 12px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
   <header>
@@ -29,99 +51,104 @@
       infectious hooks that resonate with listeners from all walks of life. From the nostalgia-inducing classics to the cutting-edge sounds of today, Milf Night's dynamic repertoire covers every inch of the musical spectrum. Whether you crave the raw
       energy of a hard-hitting rock anthem or the catchy melodies of an alternative pop gem, Milf Night has a song for every lady, ensuring that no audience member is left untouched by the captivating and genre-defying performances.</p>
     <!-- Add music samples, album covers, etc. here -->
-    
-    
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music Player</title>
-    <style>
-        .audio-player {
-            margin-bottom: 20px;
-        }
-        .songTitle {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-    </style>
-</head>
 <body>
 
     <h3 class="songTitle">Rock N Roll Queen</h3>
-    <div class="audio-player">
-        <audio id="audio1" controls controlsList="nodownload nodirectionals">
-            <source src="songs/Rock n Roll Queen.mp3" type="audio/mpeg">
-        </audio>
-    </div>
+<div class="audio-player">
+    <audio id="audio1" controls controlsList="nodownload nodirectionals">
+        <source src="songs/Rock n Roll Queen.mp3" type="audio/mpeg">
+    </audio>
+</div>
 
-    <h3 class="songTitle">The Milf That Got Away</h3>
-    <div class="audio-player">
-        <audio id="audio2" controls controlsList="nodownload nodirectionals">
-            <source src="songs/IHTAvox 2.mp3" type="audio/mpeg">
-        </audio>
-    </div>
+<h3 class="songTitle">The Milf That Got Away</h3>
+<div class="audio-player">
+    <audio id="audio2" controls controlsList="nodownload nodirectionals">
+        <source src="songs/IHTAvox 2.mp3" type="audio/mpeg">
+    </audio>
+</div>
 
-    <h3 class="songTitle">West Coast Girls</h3>
-    <div class="audio-player">
-        <audio id="audio3" controls controlsList="nodownload nodirectionals">
-            <source src="songs/West Coast Girls.mp3" type="audio/mpeg">
-        </audio>
-    </div>
+<h3 class="songTitle">West Coast Girls</h3>
+<div class="audio-player">
+    <audio id="audio3" controls controlsList="nodownload nodirectionals">
+        <source src="songs/West Coast Girls.mp3" type="audio/mpeg">
+    </audio>
+</div>
 
-    <script>
+<div class="controls">
+    <button id="prevBtn">Previous</button>
+    <button id="nextBtn">Next</button>
+</div>
+
+<script>
+    const audioElements = document.querySelectorAll("audio");
+    let currentTrackIndex = 0;
+
+    function playTrack(index) {
+        if (index < 0) index = audioElements.length - 1;
+        if (index >= audioElements.length) index = 0;
+
+        audioElements.forEach((audio, i) => {
+            if (i === index) {
+                audio.play();
+            } else {
+                audio.pause();
+                audio.currentTime = 0;
+            }
+        });
+
+        currentTrackIndex = index;
+        updateMediaSession();
+    }
+
+    function updateMediaSession() {
         if ('mediaSession' in navigator) {
-            const audioElements = document.querySelectorAll("audio");
-            
-            audioElements.forEach(audio => {
-                audio.addEventListener("play", function() {
-                    // Pause other tracks when one starts playing
-                    audioElements.forEach(otherAudio => {
-                        if (otherAudio !== audio) {
-                            otherAudio.pause();
-                        }
-                    });
+            const currentAudio = audioElements[currentTrackIndex];
+            const songTitle = currentAudio.parentElement.previousElementSibling.textContent;
 
-                    // Set song metadata for lock screen
-                    const songTitle = this.parentElement.previousElementSibling.textContent;
-                    let songMetadata = {
-                        "Rock N Roll Queen": {
-                            artist: "Milf Night",
-                            album: "Debut Album",
-                            artwork: [{ src: "images/MILF_NIGHT.jpeg", sizes: "512x512", type: "image/jpeg" }]
-                        },
-                        "The Milf That Got Away": {
-                            artist: "Milf Night",
-                            album: "Debut Album",
-                            artwork: [{ src: "images/MILF_NIGHT.jpeg", sizes: "512x512", type: "image/jpeg" }]
-                        },
-                        "West Coast Girls": {
-                            artist: "Milf Night",
-                            album: "Debut Album",
-                            artwork: [{ src: "images/MILF_NIGHT.jpeg", sizes: "512x512", type: "image/jpeg" }]
-                        }
-                    };
+            let songMetadata = {
+                "Rock N Roll Queen": {
+                    artist: "Milf Night",
+                    album: "Recipe For Disaster",
+                    artwork: [{ src: "images/MILF_NIGHT.jpeg", sizes: "512x512", type: "image/jpeg" }]
+                },
+                "The Milf That Got Away": {
+                    artist: "Milf Night",
+                    album: "Recipe For Disaste",
+                    artwork: [{ src: "images/MILF_NIGHT.jpeg", sizes: "512x512", type: "image/jpeg" }]
+                },
+                "West Coast Girls": {
+                    artist: "Milf Night",
+                    album: "Recipe For Disaste",
+                    artwork: [{ src: "images/MILF_NIGHT.jpeg", sizes: "512x512", type: "image/jpeg" }]
+                }
+            };
 
-                    if (songMetadata[songTitle]) {
-                        navigator.mediaSession.metadata = new MediaMetadata({
-                            title: songTitle,
-                            artist: songMetadata[songTitle].artist,
-                            album: songMetadata[songTitle].album,
-                            artwork: songMetadata[songTitle].artwork
-                        });
-                    }
-
-                    // Handle media control buttons
-                    navigator.mediaSession.setActionHandler("play", () => this.play());
-                    navigator.mediaSession.setActionHandler("pause", () => this.pause());
-                    navigator.mediaSession.setActionHandler("seekbackward", () => this.currentTime = Math.max(this.currentTime - 10, 0));
-                    navigator.mediaSession.setActionHandler("seekforward", () => this.currentTime = Math.min(this.currentTime + 10, this.duration));
+            if (songMetadata[songTitle]) {
+                navigator.mediaSession.metadata = new MediaMetadata({
+                    title: songTitle,
+                    artist: songMetadata[songTitle].artist,
+                    album: songMetadata[songTitle].album,
+                    artwork: songMetadata[songTitle].artwork
                 });
-            });
+            }
+
+            navigator.mediaSession.setActionHandler("play", () => audioElements[currentTrackIndex].play());
+            navigator.mediaSession.setActionHandler("pause", () => audioElements[currentTrackIndex].pause());
+            navigator.mediaSession.setActionHandler("previoustrack", () => playTrack(currentTrackIndex - 1));
+            navigator.mediaSession.setActionHandler("nexttrack", () => playTrack(currentTrackIndex + 1));
         }
-    </script>
+    }
+
+    document.getElementById("prevBtn").addEventListener("click", () => playTrack(currentTrackIndex - 1));
+    document.getElementById("nextBtn").addEventListener("click", () => playTrack(currentTrackIndex + 1));
+
+    audioElements.forEach((audio, index) => {
+        audio.addEventListener("play", function () {
+            currentTrackIndex = index;
+            playTrack(index);
+        });
+    });
+</script>
 
     
     <h2>Listen and follow Milf Night!</h2>
