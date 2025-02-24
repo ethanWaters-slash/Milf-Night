@@ -53,7 +53,7 @@
     <!-- Add music samples, album covers, etc. here -->
 <body>
 
-    <h3 class="songTitle">Rock N Roll Queen</h3>
+   <h3 class="songTitle">Rock n' Roll Queen</h3>
 <div class="audio-player">
     <audio id="audio1" controls controlsList="nodownload nodirectionals">
         <source src="songs/Rock n Roll Queen.mp3" type="audio/mpeg">
@@ -101,19 +101,19 @@
             const songTitle = currentAudio.parentElement.previousElementSibling.textContent;
 
             let songMetadata = {
-                "Rock N Roll Queen": {
+                "Rock n' Roll Queen": {
                     artist: "Milf Night",
-                    album: "Recipe For Disaster",
+                    album: "Debut Album",
                     artwork: [{ src: "images/MILF_NIGHT.jpeg", sizes: "512x512", type: "image/jpeg" }]
                 },
                 "The Milf That Got Away": {
                     artist: "Milf Night",
-                    album: "Recipe For Disaster",
+                    album: "Debut Album",
                     artwork: [{ src: "images/MILF_NIGHT.jpeg", sizes: "512x512", type: "image/jpeg" }]
                 },
                 "West Coast Girls": {
                     artist: "Milf Night",
-                    album: "Recipe For Disaster",
+                    album: "Debut Album",
                     artwork: [{ src: "images/MILF_NIGHT.jpeg", sizes: "512x512", type: "image/jpeg" }]
                 }
             };
@@ -127,6 +127,7 @@
                 });
             }
 
+            // Enable lock screen Next & Previous buttons (but NOT on the website)
             navigator.mediaSession.setActionHandler("play", () => audioElements[currentTrackIndex].play());
             navigator.mediaSession.setActionHandler("pause", () => audioElements[currentTrackIndex].pause());
             navigator.mediaSession.setActionHandler("previoustrack", () => playTrack(currentTrackIndex - 1));
@@ -134,17 +135,15 @@
         }
     }
 
-    document.getElementById("prevBtn").addEventListener("click", () => playTrack(currentTrackIndex - 1));
-    document.getElementById("nextBtn").addEventListener("click", () => playTrack(currentTrackIndex + 1));
-
+    // Auto-update media session when a song starts playing
     audioElements.forEach((audio, index) => {
         audio.addEventListener("play", function () {
             currentTrackIndex = index;
             playTrack(index);
         });
     });
-</script>
 
+</script>
     
     <h2>Listen and follow Milf Night!</h2>
      <a href="https://open.spotify.com/show/49nxTppbgeGXE8wSyQSqw0?si=K-uqRhIASa6OP38N5JoObw" target="_blank" class="image-link">
