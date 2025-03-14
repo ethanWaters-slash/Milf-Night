@@ -1,8 +1,8 @@
 {
     "name": "Milf Night.com",
     "short_name": "Milf Night.com",
-    "start_url": "/index.html",
-    "scope": "/milfNight",
+    "start_url": "milfNigh/index.html",
+    "scope": "/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#000000",
