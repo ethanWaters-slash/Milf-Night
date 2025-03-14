@@ -2,13 +2,19 @@
     "name": "Milf Night.com",
     "short_name": "Milf Night.com",
     "start_url": "/index.html",
+    "scope": "/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#000000",
-    "apple-touch-icon": [
+    "icons": [
         {
             "src": "/images/MILF_NIGHT-192x192.png",
             "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/MILF_NIGHT-512x512.png",
+            "sizes": "512x512",
             "type": "image/png"
         }
     ]
