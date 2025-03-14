@@ -6,7 +6,7 @@ const urlsToCache = [
     '/script.js',
     '/service-worker.js',
     '/manifest.json',
-    '/images/MILF_NIGHT.jpeg', // Logo for the PWA
+    '/images/MILF_NIGHT-192x192.png', // Logo for the PWA
 ];
 
 // Install event - Cache essential files
