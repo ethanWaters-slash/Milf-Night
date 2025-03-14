@@ -1,5 +1,3 @@
-
-
 var slides = document.querySelectorAll(".mySlides");
 var i = 0;
 
