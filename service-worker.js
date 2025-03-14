@@ -1,12 +1,12 @@
 const CACHE_NAME = 'my-site-cache-v1';
 const urlsToCache = [
     '/',
-    '/index.html',
-    '/styles.css',
-    '/script.js',
-    '/service-worker.js',
-    '/manifest.json',
-    '/images/MILF_NIGHT-192x192.png', // Logo for the PWA
+    'index.html',
+    'styles.css',
+    'script.js',
+    'service-worker.js',
+    'manifest.json',
+    'images/MILF_NIGHT-192x192.png', // Logo for the PWA
 ];
 
 // Install event - Cache essential files
