@@ -1,340 +1,248 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Milf Night</title>
-  <link rel="stylesheet" href="styles.css">
-  <!-- Standard Favicon -->
-<link rel="apple-touch-icon" type="image/png" sizes="192x192" href="images/MILF_NIGHT-192x192.png">
 
-<!-- Apple Touch Icon (for iOS home screen bookmarks) -->
-<link rel="apple-touch-icon" sizes="192x192" href="images/MILF_NIGHT-192x192.png">
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bangers&family=Poppins:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  />
 
-<!-- Android Chrome Web App Icon -->
-<link rel="manifest" href="manifest.json">
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
 
-  <title>Music Player</title>
-    <style>
-        <style>
-        .audio-player {
-            margin-bottom: 20px;
-        }
-        .songTitle {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            margin-top: 10px;
-        }
-        button {
-            padding: 8px 12px;
-            font-size: 14px;
-            cursor: pointer;
-        }
-    </style>
+  <!-- Favicons & Web Manifest -->
+  <link rel="apple-touch-icon" type="image/png" sizes="192x192" href="images/MILF_NIGHT-192x192.png" />
+  <link rel="apple-touch-icon" sizes="192x192" href="images/MILF_NIGHT-192x192.png" />
+  <link rel="manifest" href="manifest.json" />
 </head>
 <body>
-  <header>
-    <img class="logo" src="images/milfNight.png" alt="logo">
-
+  <!-- HEADER / HERO -->
+  <header class="panel header-panel">
+    <div class="container">
+      <img src="images/milfNight.png" alt="Milf Night Logo" class="logo" />
+      <p class="tagline">The Greatest Rock Band to Never Exist</p>
+    </div>
   </header>
-  <!-- Add more testimonial divs as needed -->
-  <section id="band-members">
-    <h1>The Greatest Rock Band to Never Exist</h1>
-    <div class="">
-      <img class="member-image" src="images/mrMilfNight.png" alt="Image 1">
-      <h1>Ethan the Soulful Seductor</h1>
-      <p>Singer, Guitarist, Bassist, Drummer, Sound Engineer, Producer, Lead Developer, Marketing, Manager, Chef, Gardener, Lover</p>
-    </div>
-    <!-- Add more carousel items as needed -->
-  </section>
 
-  <section id="music">
-    <h2>Milf Night's Music</h2>
-    <p class = "bio">"Recipe for Disaster" is the greatest rock debut album that transcends genres. It's a sonic journey encompassing a wide spectrum of sounds and styles. With a diverse range of influences, Milf Night effortlessly traverses the realms of classic and hard rock, infusing
-      performances with electrifying guitar riffs, thunderous drums, and soul-stirring vocals. Yet, the musical prowess extends beyond the sounds of rock, as they fearlessly dive into the roots of alternative music, exploring catchy melodies and
-      infectious hooks that resonate with listeners from all walks of life. From the nostalgia-inducing classics to the cutting-edge sounds of today, Milf Night's dynamic repertoire covers every inch of the musical spectrum. Whether you crave the raw
-      energy of a hard-hitting rock anthem or the catchy melodies of an alternative pop gem, Milf Night has a song for every lady, ensuring that no audience member is left untouched by the captivating and genre-defying performances.</p>
-    <!-- Add music samples, album covers, etc. here -->
-<body>
-
-   <h3 class="songTitle">Rock n' Roll Queen</h3>
-<div class="audio-player">
-    <audio id="audio1" controls controlsList="nodownload nodirectionals">
-        <source src="songs/Rock n Roll Queen.mp3" type="audio/mpeg">
-    </audio>
-</div>
-
-<h3 class="songTitle">The Milf That Got Away</h3>
-<div class="audio-player">
-    <audio id="audio2" controls controlsList="nodownload nodirectionals">
-        <source src="songs/IHTAvox 2.mp3" type="audio/mpeg">
-    </audio>
-</div>
-
-<h3 class="songTitle">West Coast Girls</h3>
-<div class="audio-player">
-    <audio id="audio3" controls controlsList="nodownload nodirectionals">
-        <source src="songs/West Coast Girls.mp3" type="audio/mpeg">
-    </audio>
-</div>
-
-<script>
-    const audioElements = document.querySelectorAll("audio");
-    let currentTrackIndex = 0;
-
-    function playTrack(index) {
-        if (index < 0) index = audioElements.length - 1;
-        if (index >= audioElements.length) index = 0;
-
-        audioElements.forEach((audio, i) => {
-            if (i === index) {
-                audio.play();
-            } else {
-                audio.pause();
-                audio.currentTime = 0;
-            }
-        });
-
-        currentTrackIndex = index;
-        updateMediaSession();
-    }
-
-    function updateMediaSession() {
-        if ('mediaSession' in navigator) {
-            const currentAudio = audioElements[currentTrackIndex];
-            const songTitle = currentAudio.parentElement.previousElementSibling.textContent;
-
-            let songMetadata = {
-                "Rock n' Roll Queen": {
-                    artist: "Milf Night",
-                    album: "Debut Album",
-                    artwork: [{ src: "images/MILF_NIGHT.jpeg", sizes: "512x512", type: "image/jpeg" }]
-                },
-                "The Milf That Got Away": {
-                    artist: "Milf Night",
-                    album: "Debut Album",
-                    artwork: [{ src: "images/MILF_NIGHT.jpeg", sizes: "512x512", type: "image/jpeg" }]
-                },
-                "West Coast Girls": {
-                    artist: "Milf Night",
-                    album: "Debut Album",
-                    artwork: [{ src: "images/MILF_NIGHT.jpeg", sizes: "512x512", type: "image/jpeg" }]
-                }
-            };
-
-            if (songMetadata[songTitle]) {
-                navigator.mediaSession.metadata = new MediaMetadata({
-                    title: songTitle,
-                    artist: songMetadata[songTitle].artist,
-                    album: songMetadata[songTitle].album,
-                    artwork: songMetadata[songTitle].artwork
-                });
-            }
-
-            // Enable lock screen Next & Previous buttons (but NOT on the website)
-            navigator.mediaSession.setActionHandler("play", () => audioElements[currentTrackIndex].play());
-            navigator.mediaSession.setActionHandler("pause", () => audioElements[currentTrackIndex].pause());
-            navigator.mediaSession.setActionHandler("previoustrack", () => playTrack(currentTrackIndex - 1));
-            navigator.mediaSession.setActionHandler("nexttrack", () => playTrack(currentTrackIndex + 1));
-        }
-    }
-
-    // Auto-update media session when a song starts playing
-    audioElements.forEach((audio, index) => {
-        audio.addEventListener("play", function () {
-            currentTrackIndex = index;
-            playTrack(index);
-        });
-    });
-
-</script>
-    
-    <h2>Listen and follow Milf Night!</h2>
-     <a href="https://open.spotify.com/show/49nxTppbgeGXE8wSyQSqw0?si=K-uqRhIASa6OP38N5JoObw" target="_blank" class="image-link">
-    <img src="images/spotifyIcon.png" alt="Clickable Image" class="small-image">
-
-    <a href="https://www.instagram.com/milf_night_/" target="_blank" class="image-link">
-    <img src="images/Instagram_Glyph_Gradient.svg" alt="Instagram Logo" class="small-image">
-</a>
-</a>
-
-<style>
-    .small-image {
-        width: 50px; /* Adjust as needed */
-        height: auto;
-        padding: 3px;/* Maintains aspect ratio */
-    }
-</style>
-  </section>
-  <section class="tour-dates">
-    <h2>Tour Dates</h2>
-    <p>VIP: $45</p>
-    <p>General Admission: $25</p>
-    <div class="tour-calendar">
-      <div class="tour-month">
-  <h3>April</h3>
-  <ul class="tour-days">
-    <li class="tour-day">6 - Paris</li>
-    <li class="tour-day">7 - Paris</li>
-    <li class="tour-day">8 - Paris</li>
-    <li class="tour-day">10 - Brussels</li>
-    <li class="tour-day">11 - Brussels</li>
-    <li class="tour-day">12 - Brussels</li>
-    <li class="tour-day">29 - Amsterdam</li>
-    <li class="tour-day">30 - Amsterdam</li>
-  </ul>
-</div>
-<div class="tour-month">
-  <h3>May</h3>
-  <ul class="tour-days">
-    <li class="tour-day">4 - Berlin</li>
-    <li class="tour-day">5 - Berlin</li>
-    <li class="tour-day">11 - Hamburg</li>
-    <li class="tour-day">12 - Hamburg</li>
-    <li class="tour-day">18 - Munich</li>
-    <li class="tour-day">19 - Munich</li>
-    <li class="tour-day">25 - Vienna</li>
-    <li class="tour-day">26 - Vienna</li>
-  </ul>
-</div>
-
-<div class="tour-month">
-  <h3>June</h3>
-  <ul class="tour-days">
-    <li class="tour-day">1 - Rome</li>
-    <li class="tour-day">2 - Rome</li>
-    <li class="tour-day">9 - Florence</li>
-    <li class="tour-day">10 - Florence</li>
-    <li class="tour-day">12 - Milan</li>
-    <li class="tour-day">15 - Milan</li>
-    <li class="tour-day">19 - Barcelona</li>
-    <li class="tour-day">20 - Barcelona</li>
-  </ul>
-</div>
-    </div>
-    <!-- Add more months and days as needed -->
-    <div class="selected-date">
-      <h3>Selected Date:</h3>
-      <p id="selected-date-info">Click on a date to view details</p>
+  <!-- BAND MEMBERS -->
+  <section class="panel members-panel">
+    <div class="container grid-two-columns">
+      <div class="member-image-wrapper">
+        <img src="images/mrMilfNight.png" alt="Ethan the Soulful Seductor" class="member-image" />
+      </div>
+      <div class="member-info">
+        <h2>Ethan the Soulful Seductor</h2>
+        <ul>
+          <li>Singer</li>
+          <li>Guitarist</li>
+          <li>Bassist</li>
+          <li>Drummer</li>
+          <li>Sound Engineer</li>
+          <li>Producer</li>
+          <li>Lead Developer</li>
+          <li>Marketing</li>
+          <li>Manager</li>
+          <li>Chef</li>
+          <li>Gardener</li>
+          <li>Lover</li>
+        </ul>
+      </div>
     </div>
   </section>
 
-  <section id="merchandise">
-    <h2>Merchandise</h2>
-    <div class="merch-items">
-      <div class="merch-item">
-        <div class="merch-image">
-          <img src="images/milfNightLogo.png" alt="Merch Item 1">
-          <p class="sold-out-text">Sold Out</p>
-          <h3>Milf Night Poster</h3>
-          <p>Display anywhere you'd like.</p>
-          <span class="price">$19.99</span>
+  <!-- MUSIC SECTION -->
+  <section class="panel music-panel">
+    <div class="container">
+      <h2>Milf Night’s Music</h2>
+      <p class="bio">
+        “Recipe for Disaster” is the greatest rock debut album that transcends genres. It’s a sonic journey encompassing a wide spectrum of sounds and styles. With a diverse range of influences, Milf Night effortlessly traverses the realms
+        of classic and hard rock, infusing performances with electrifying guitar riffs, thunderous drums, and soul-stirring vocals. Yet, the musical prowess extends beyond the sounds of rock, as they fearlessly dive into the roots of alternative music,
+        exploring catchy melodies and infectious hooks that resonate with listeners from all walks of life. From the nostalgia-inducing classics to the cutting-edge sounds of today, Milf Night’s dynamic repertoire covers every inch of the musical
+        spectrum. Whether you crave the raw energy of a hard-hitting rock anthem or the catchy melodies of an alternative pop gem, Milf Night has a song for every lady, ensuring that no audience member is left untouched by the captivating and
+        genre-defying performances.
+      </p>
+
+      <div class="songs-grid">
+        <div class="song-card">
+          <h3 class="song-title">Rock n’ Roll Queen</h3>
+          <audio controls src="songs/Rock n Roll Queen.mp3"></audio>
+        </div>
+        <div class="song-card">
+          <h3 class="song-title">The Milf That Got Away</h3>
+          <audio controls src="songs/IHTAvox 2.mp3"></audio>
+        </div>
+        <div class="song-card">
+          <h3 class="song-title">West Coast Girls</h3>
+          <audio controls src="songs/West Coast Girls.mp3"></audio>
+        </div>
+      </div>
+      <h2>Follow The Madness</h2>
+      <div class="social-links">
+        <a href="https://open.spotify.com/show/49nxTppbgeGXE8wSyQSqw0?si=K-uqRhIASa6OP38N5JoObw" target="_blank">
+          <img src="images/spotifyIcon.png" alt="Spotify" class="social-icon" />
+        </a>
+        <a href="https://www.instagram.com/milf_night_/" target="_blank">
+          <img src="images/Instagram_Glyph_Gradient.svg" alt="Instagram" class="social-icon" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOUR DATES -->
+  <section class="panel tour-panel">
+    <div class="container">
+      <h2>Tour Dates</h2>
+      <p class="ticket-pricing">
+        <span class="price-vip">VIP: $45</span>
+        <span class="price-ga">General Admission: $25</span>
+      </p>
+
+      <div class="tour-grid">
+        <div class="tour-month-card">
+          <h3>July</h3>
+          <ul class="tour-days">
+            <li data-city="Paris">6</li>
+            <li data-city="Paris">7</li>
+            <li data-city="Paris">8</li>
+            <li data-city="Brussels">10</li>
+            <li data-city="Brussels">11</li>
+            <li data-city="Brussels">12</li>
+            <li data-city="Amsterdam">29</li>
+            <li data-city="Amsterdam">30</li>
+          </ul>
+        </div>
+        <div class="tour-month-card">
+          <h3>August</h3>
+          <ul class="tour-days">
+            <li data-city="Berlin">4</li>
+            <li data-city="Berlin">5</li>
+            <li data-city="Hamburg">11</li>
+            <li data-city="Hamburg">12</li>
+            <li data-city="Munich">18</li>
+            <li data-city="Munich">19</li>
+            <li data-city="Vienna">25</li>
+            <li data-city="Vienna">26</li>
+          </ul>
+        </div>
+        <div class="tour-month-card">
+          <h3>September</h3>
+          <ul class="tour-days">
+            <li data-city="Rome">1</li>
+            <li data-city="Rome">2</li>
+            <li data-city="Florence">9</li>
+            <li data-city="Florence">10</li>
+            <li data-city="Milan">12</li>
+            <li data-city="Milan">15</li>
+            <li data-city="Barcelona">19</li>
+            <li data-city="Barcelona">20</li>
+          </ul>
         </div>
       </div>
 
-      <div class="merch-item">
-        <div class="merch-image">
-          <img src="images/熟女の夜 2.png" alt="Merch Item 2">
-          <p class="sold-out-text">Sold Out</p>
-          <h3>"Mature Women Night" Shirt (Adult)</h3>
-          <p>Wear whenever you'd like.</p>
-          <span class="price">$24.99</span>
-        </div>
-      </div>
-      <div class="merch-item">
-        <div class="merch-image">
-          <img src="images/milfNight2.png" alt="Merch Item 3">
-          <p class="sold-out-text">Sold Out</p>
-          <h3>"Uppies 24/7" Milf Night Shirt (Adult)</h3>
-          <p>Wear whenever you'd like.</p>
-          <span class="price">$24.99</span>
-        </div>
-      </div>
-      
+      <p id="selected-date-info" class="selected-date">
+        Click on a date to view details
+      </p>
     </div>
   </section>
 
-  <h2>Hear From Our Fans</h2>
-  <div class="carousel">
-    <div class="mySlides fade">
-      <div class="testimonial">
-        <blockquote>
-          "I've been a fan of Milf Night since the very first show, and he never disappoints."
-        </blockquote>
-        <cite>-Aidan Keith</cite>
+  <!-- MERCHANDISE -->
+  <section class="panel merch-panel">
+    <div class="container">
+      <h2>Merchandise</h2>
+      <div class="merch-grid">
+        <div class="merch-card sold-out">
+          <div class="merch-image-wrapper">
+            <img src="images/milfNightLogo.png" alt="Milf Night Poster" />
+            <span class="sold-out-overlay">Sold Out</span>
+          </div>
+          <h3 class="merch-title">Milf Night Poster</h3>
+          <p class="merch-desc">Display anywhere you’d like.</p>
+          <p class="merch-price">$19.99</p>
+        </div>
+        <div class="merch-card sold-out">
+          <div class="merch-image-wrapper">
+            <img src="images/熟女の夜 2.png" alt="Mature Women Night Shirt" />
+            <span class="sold-out-overlay">Sold Out</span>
+          </div>
+          <h3 class="merch-title">"Mature Women Night" Shirt (Adult)</h3>
+          <p class="merch-desc">Wear whenever you’d like.</p>
+          <p class="merch-price">$24.99</p>
+        </div>
+        <div class="merch-card sold-out">
+          <div class="merch-image-wrapper">
+            <img src="images/milfNight2.png" alt="Uppies 24/7 Milf Night Shirt" />
+            <span class="sold-out-overlay">Sold Out</span>
+          </div>
+          <h3 class="merch-title">"Uppies 24/7" Milf Night Shirt (Adult)</h3>
+          <p class="merch-desc">Wear whenever you’d like.</p>
+          <p class="merch-price">$24.99</p>
+        </div>
       </div>
     </div>
-    <div class="mySlides fade">
-      <div class="testimonial">
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="panel testimonials-panel">
+  <div class="container">
+    <h2>Hear From Our Fans</h2>
+    <div class="testimonials-slider">
+      <div class="testimonial active">
         <blockquote>
-          "Milf Night's energy and talent is unmatched. Milf Night changed my life!"
+          “I caught sight of Milf Night flexing the amp knobs mid-riff, and my blood pressure shot through the roof. Best life decision ever.”
         </blockquote>
-        <cite>-Ryan Pearce</cite>
+        <cite>— Roxie Delgado</cite>
       </div>
-    </div>
-    <div class="mySlides fade">
       <div class="testimonial">
         <blockquote>
-          "Everyone else likes it, so I like it too!"
+          “Milf Night’s guitar solo made me question every life choice I’ve ever made… I then bought three T-shirts and a poster. No regrets, just euphoria.”
         </blockquote>
-        <cite>-CJ</cite>
+        <cite>— Tanya Alvarez</cite>
       </div>
-    </div>
-    <div class="mySlides fade">
       <div class="testimonial">
         <blockquote>
-          "I was the MVP of Milf Night!!!"
+          “Milf Night was so legendary that I died.”
         </blockquote>
-        <cite>-Tanisha the RA</cite>
+        <cite>— McKenna Nguyen</cite>
       </div>
-    </div>
-    <div class="mySlides fade">
       <div class="testimonial">
         <blockquote>
-          "I still can't get a shirt or a ticket!!!"
+          “Went in as a casual listener, and ended up the MVP of Milf Night.”
         </blockquote>
-        <cite>-Daniel Tran</cite>
+        <cite>— Dana Pierce</cite>
+      </div>
+      <div class="testimonial">
+        <blockquote>
+          “I moshed once and ended up going home with Milf Night... he cooked me breakfast :)”
+        </blockquote>
+        <cite>— Riley Gomez</cite>
       </div>
     </div>
   </div>
+</section>
 
-  <div class="contact-info">
-<p>For any inquiries or to contact us directly, you can email us at:</p>
-<p class="email">
-    <a href="mailto:milfnightrocknroll@gmail.com">milfnightrocknroll@gmail.com</a>
-</p>
 
-<style>
-    .small-image {
-        width: 50px; /* Adjust as needed */
-        height: auto; /* Maintain aspect ratio */
-    }
-    .image-link {
-        display: inline-block;
-        margin-bottom: 10px; /* Adds space below the icon */
-    }
-    .email a {
-        color: #1a0dab; /* Default link color, adjust as needed */
-        text-decoration: none;
-        font-weight: bold;
-    }
-    .email a:hover {
-        text-decoration: underline;
-    }
-</style>
 
-</div>
-  
-  <img class="poster" src="images/milfNightLogo.png" alt="poster">
-  <footer>
-    <p>&copy; 2025 Milf Night. All rights reserved.</p>
-  </footer>
+  <!-- CONTACT & FOOTER -->
+  <section class="panel contact-panel">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <p>
+        For any inquiries or to contact us directly, you can email us at:
+      </p>
+      <p class="email">
+        <a href="mailto:milfnightrocknroll@gmail.com">milfnightrocknroll@gmail.com</a>
+      </p>
+      <img src="images/milfNightLogo.png" alt="MILF NIGHT Logo" class="footer-poster" />
+      <footer>
+        <p>&copy; 2025 Milf Night. All rights reserved.</p>
+      </footer>
+    </div>
+  </section>
+
+  <!-- MAIN JAVASCRIPT -->
   <script src="script.js"></script>
 </body>
-
 </html>
